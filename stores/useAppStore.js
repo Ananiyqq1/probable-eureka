@@ -104,7 +104,7 @@ export const useAppStore = defineStore("app", {
       const studentStore = useStudentStore()
 
       // Check authentication for protected routes
-      if (["admin", "student"].includes(view) && !authStore.isAuthenticated) {
+      if (["admin", "student", "preferences"].includes(view) && !authStore.isAuthenticated) {
         uiStore.setCurrentView("login")
         uiStore.showToast({
           message: "Please sign in to access this page",
@@ -122,7 +122,7 @@ export const useAppStore = defineStore("app", {
         return
       }
 
-      if (view === "student" && !authStore.isStudent) {
+      if ((view === "student" || view === "preferences") && !authStore.isStudent) {
         uiStore.showToast({
           message: "Access denied. Student account required.",
           type: "error",

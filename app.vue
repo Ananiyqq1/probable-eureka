@@ -12,6 +12,7 @@
       <main class="main-content" :class="{ 'full-width': appStore.currentView === 'login' }">
         <!-- Dynamic View Rendering -->
         <LoginView v-if="appStore.currentView === 'login'" />
+        <StudentPreferences v-else-if="appStore.currentView === 'preferences'" />
         <AdminView v-else-if="appStore.currentView === 'admin'" />
         <StudentView v-else-if="appStore.currentView === 'student'" />
         <div v-else class="loading-view">
@@ -31,6 +32,7 @@ import AppSidebar from './components/common/AppSidebar.vue'
 import LoginView from './views/login/LoginView.vue'
 import AdminView from './views/admin/AdminView.vue'
 import StudentView from './views/student/StudentView.vue'
+import StudentPreferences from './components/student/StudentPreferences.vue'
 
 const appStore = useAppStore()
 

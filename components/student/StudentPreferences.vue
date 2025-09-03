@@ -184,7 +184,7 @@ const saveForLater = async () => {
     uiStore.showNotification('Preferences saved! You can complete this later.', 'success')
     
     // Navigate to student dashboard
-    appStore.navigateToView('student')
+    appStore.setCurrentView('student')
   } catch (error) {
     console.error('[v0] Error saving preferences:', error)
     uiStore.showNotification('Failed to save preferences. Please try again.', 'error')
@@ -211,7 +211,7 @@ const submitPreferences = async () => {
     uiStore.showNotification(`Success! ${selectedCourses.value.length} courses selected. Preferences saved.`, 'success')
     
     // Navigate to student dashboard
-    appStore.navigateToView('student')
+    appStore.setCurrentView('student')
   } catch (error) {
     console.error('[v0] Error submitting preferences:', error)
     uiStore.showNotification('Failed to save preferences. Please try again.', 'error')

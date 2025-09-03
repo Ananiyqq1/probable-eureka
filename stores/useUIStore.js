@@ -6,7 +6,7 @@ export const useUIStore = defineStore("ui", {
     theme: "dark", // 'light' | 'dark'
 
     // Navigation state
-    currentView: "login", // 'login' | 'admin' | 'student'
+    currentView: "login", // 'login' | 'admin' | 'student' | 'preferences'
     sidebarCollapsed: false,
 
     // Modal states
