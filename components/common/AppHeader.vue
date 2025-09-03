@@ -59,11 +59,13 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useAppStore } from '../../stores/useAppStore.js'
+import { useUIStore } from '../../stores/useUIStore.js'
 
 const appStore = useAppStore()
+const uiStore = useUIStore()
 const showUserMenu = ref(false)
 
-const isDark = computed(() => appStore.theme === 'dark')
+const isDark = computed(() => uiStore.theme === 'dark')
 const currentUser = computed(() => appStore.currentUser)
 
 const userInitials = computed(() => {
@@ -72,7 +74,7 @@ const userInitials = computed(() => {
 })
 
 const toggleTheme = () => {
-  appStore.toggleTheme()
+  uiStore.toggleTheme()
 }
 
 const logout = () => {
