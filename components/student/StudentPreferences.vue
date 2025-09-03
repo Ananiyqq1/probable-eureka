@@ -166,7 +166,7 @@ const toggleCourse = (courseId) => {
     if (selectedCourses.value.length < 8) {
       selectedCourses.value.push(courseId)
     } else {
-      uiStore.showNotification('You can only select up to 8 courses.', 'warning')
+      uiStore.showToast({ message: 'You can only select up to 8 courses.', type: 'warning' })
     }
   }
 }
@@ -181,13 +181,13 @@ const saveForLater = async () => {
       completedAt: null // Not completed, just saved
     })
     
-    uiStore.showNotification('Preferences saved! You can complete this later.', 'success')
+    uiStore.showToast({ message: 'Preferences saved! You can complete this later.', type: 'success' })
     
     // Navigate to student dashboard
     appStore.setCurrentView('student')
   } catch (error) {
     console.error('[v0] Error saving preferences:', error)
-    uiStore.showNotification('Failed to save preferences. Please try again.', 'error')
+    uiStore.showToast({ message: 'Failed to save preferences. Please try again.', type: 'error' })
   } finally {
     isLoading.value = false
   }
@@ -195,7 +195,7 @@ const saveForLater = async () => {
 
 const submitPreferences = async () => {
   if (selectedCourses.value.length < 3) {
-    uiStore.showNotification('Please select at least 3 courses to continue.', 'warning')
+    uiStore.showToast({ message: 'Please select at least 3 courses to continue.', type: 'warning' })
     return
   }
   
@@ -208,13 +208,13 @@ const submitPreferences = async () => {
       completedAt: new Date().toISOString()
     })
     
-    uiStore.showNotification(`Success! ${selectedCourses.value.length} courses selected. Preferences saved.`, 'success')
+    uiStore.showToast({ message: `Success! ${selectedCourses.value.length} courses selected. Preferences saved.`, type: 'success' })
     
     // Navigate to student dashboard
     appStore.setCurrentView('student')
   } catch (error) {
     console.error('[v0] Error submitting preferences:', error)
-    uiStore.showNotification('Failed to save preferences. Please try again.', 'error')
+    uiStore.showToast({ message: 'Failed to save preferences. Please try again.', type: 'error' })
   } finally {
     isLoading.value = false
   }
